@@ -67,7 +67,7 @@ public class UsuariosController {
     public ResponseEntity<Object> atualizarUsuario(@PathVariable(value = "id") int id, @RequestBody UsuariosDto usuariosDto) {
         Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(id);
         if (usuarioOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não encontrado");
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado");
         }
         UsuariosModel usuarioModel = usuarioOptional.get();
         BeanUtils.copyProperties(usuariosDto, usuarioModel);
