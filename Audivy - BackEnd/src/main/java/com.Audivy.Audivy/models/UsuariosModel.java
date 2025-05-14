@@ -2,7 +2,6 @@ package com.Audivy.Audivy.models;
 
 import jakarta.persistence.*;
 import java.io.Serializable;
-import java.math.BigDecimal;
 
 @Entity
 @Table(name = "TBUSUARIOS")
