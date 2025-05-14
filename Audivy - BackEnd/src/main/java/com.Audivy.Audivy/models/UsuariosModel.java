@@ -1,5 +1,6 @@
 package com.Audivy.Audivy.models;
 
+import com.Audivy.Audivy.enums.UsuariosPlano;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
@@ -15,14 +16,7 @@ public class UsuariosModel implements Serializable {
     private String dsEmail;
     private String dsSenha;
     private String tpUsuario;
-
-    public String getNmUsuario() {
-        return nmUsuario;
-    }
-
-    public void setNmUsuario(String nmUsuario) {
-        this.nmUsuario = nmUsuario;
-    }
+    private UsuariosPlano dsPlano;
 
     public Integer getId() {
         return id;
@@ -32,12 +26,12 @@ public class UsuariosModel implements Serializable {
         this.id = id;
     }
 
-    public String getDsSenha() {
-        return dsSenha;
+    public String getNmUsuario() {
+        return nmUsuario;
     }
 
-    public void setDsSenha(String dsSenha) {
-        this.dsSenha = dsSenha;
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
     }
 
     public String getDsEmail() {
@@ -48,11 +42,27 @@ public class UsuariosModel implements Serializable {
         this.dsEmail = dsEmail;
     }
 
+    public String getDsSenha() {
+        return dsSenha;
+    }
+
+    public void setDsSenha(String dsSenha) {
+        this.dsSenha = dsSenha;
+    }
+
     public String getTpUsuario() {
         return tpUsuario;
     }
 
     public void setTpUsuario(String tpUsuario) {
         this.tpUsuario = tpUsuario;
+    }
+
+    public UsuariosPlano getDsPlano() {
+        return dsPlano;
+    }
+
+    public void setDsPlano(UsuariosPlano dsPlano) {
+        this.dsPlano = dsPlano;
     }
 }
