@@ -1,6 +1,9 @@
 package com.Audivy.Audivy.models;
 
 import jakarta.persistence.*;
+import jakarta.persistence.criteria.CriteriaBuilder;
+import java.util.List;
+
 import java.io.Serializable;
 
 @Entity
@@ -10,44 +13,53 @@ public class MusicasModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idMusica;
     private String nmTitulo;
     private String dsDuracao;
     private String arqAudio;
     private String dsGenero;
-    private String idAlbum;
-    private String idArtista;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idAlbum")
+    private AlbunsModel Album;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuario")
+    private UsuariosModel Usuario;
+
+    @OneToMany(mappedBy = "Musica")
+    private List<PlaylistMusicasModel> playlistMusicas;
+
+    public Integer getIdMusica() {
+        return idMusica;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdMusica(Integer idMusica) {
+        this.idMusica = idMusica;
     }
 
-    public String getNmTitulo() {
-        return nmTitulo;
+    public List<PlaylistMusicasModel> getPlaylistMusicas() {
+        return playlistMusicas;
     }
 
-    public void setNmTitulo(String nmTitulo) {
-        this.nmTitulo = nmTitulo;
+    public void setPlaylistMusicas(List<PlaylistMusicasModel> playlistMusicas) {
+        this.playlistMusicas = playlistMusicas;
     }
 
-    public String getDsDuracao() {
-        return dsDuracao;
+    public AlbunsModel getAlbum() {
+        return Album;
     }
 
-    public void setDsDuracao(String dsDuracao) {
-        this.dsDuracao = dsDuracao;
+    public void setAlbum(AlbunsModel album) {
+        Album = album;
     }
 
-    public String getArqAudio() {
-        return arqAudio;
+    public UsuariosModel getUsuario() {
+        return Usuario;
     }
 
-    public void setArqAudio(String arqAudio) {
-        this.arqAudio = arqAudio;
+    public void setUsuario(UsuariosModel usuario) {
+        Usuario = usuario;
     }
 
     public String getDsGenero() {
@@ -58,19 +70,27 @@ public class MusicasModel implements Serializable {
         this.dsGenero = dsGenero;
     }
 
-    public String getIdAlbum() {
-        return idAlbum;
+    public String getDsDuracao() {
+        return dsDuracao;
     }
 
-    public void setIdAlbum(String idAlbum) {
-        this.idAlbum = idAlbum;
+    public void setDsDuracao(String dsDuracao) {
+        this.dsDuracao = dsDuracao;
     }
 
-    public String getIdArtista() {
-        return idArtista;
+    public String getNmTitulo() {
+        return nmTitulo;
     }
 
-    public void setIdArtista(String idArtista) {
-        this.idArtista = idArtista;
+    public void setNmTitulo(String nmTitulo) {
+        this.nmTitulo = nmTitulo;
+    }
+
+    public String getArqAudio() {
+        return arqAudio;
+    }
+
+    public void setArqAudio(String arqAudio) {
+        this.arqAudio = arqAudio;
     }
 }

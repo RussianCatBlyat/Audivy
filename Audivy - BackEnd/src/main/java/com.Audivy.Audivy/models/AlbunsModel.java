@@ -3,6 +3,7 @@ package com.Audivy.Audivy.models;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "TBALBUNS")
@@ -11,25 +12,31 @@ public class AlbunsModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idAlbum;
     private String nmTitulo;
     private Date dtLancamento;
-    private Integer idArtista;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idUsuario")
+    private UsuariosModel Usuario;
+
+    @OneToMany(mappedBy = "Album")
+    private List<MusicasModel> Musicas;
+
+    public Integer getIdAlbum() {
+        return idAlbum;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdAlbum(Integer idAlbum) {
+        this.idAlbum = idAlbum;
     }
 
-    public String getNmTitulo() {
-        return nmTitulo;
+    public UsuariosModel getUsuario() {
+        return Usuario;
     }
 
-    public void setNmTitulo(String nmTitulo) {
-        this.nmTitulo = nmTitulo;
+    public void setUsuario(UsuariosModel usuario) {
+        Usuario = usuario;
     }
 
     public Date getDtLancamento() {
@@ -40,11 +47,19 @@ public class AlbunsModel implements Serializable {
         this.dtLancamento = dtLancamento;
     }
 
-    public Integer getIdArtista() {
-        return idArtista;
+    public String getNmTitulo() {
+        return nmTitulo;
     }
 
-    public void setIdArtista(Integer idArtista) {
-        this.idArtista = idArtista;
+    public void setNmTitulo(String nmTitulo) {
+        this.nmTitulo = nmTitulo;
+    }
+
+    public List<MusicasModel> getMusicas() {
+        return Musicas;
+    }
+
+    public void setMusicas(List<MusicasModel> musicas) {
+        Musicas = musicas;
     }
 }

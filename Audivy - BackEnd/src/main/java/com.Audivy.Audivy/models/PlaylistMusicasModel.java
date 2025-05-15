@@ -11,31 +11,37 @@ public class PlaylistMusicasModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private Integer idPlaylist;
-    private Integer idMusica;
+    private Integer idPlaylistMusica;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idPlaylist")
+    private PlaylistsModel Playlist;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "idMusica")
+    private MusicasModel Musica;
+
+    public Integer getIdPlaylistMusica() {
+        return idPlaylistMusica;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdPlaylistMusica(Integer idPlaylistMusica) {
+        this.idPlaylistMusica = idPlaylistMusica;
     }
 
-    public Integer getIdPlaylist() {
-        return idPlaylist;
+    public PlaylistsModel getPlaylist() {
+        return Playlist;
     }
 
-    public void setIdPlaylist(Integer idPlaylist) {
-        this.idPlaylist = idPlaylist;
+    public void setPlaylist(PlaylistsModel playlist) {
+        Playlist = playlist;
     }
 
-    public Integer getIdMusica() {
-        return idMusica;
+    public MusicasModel getMusica() {
+        return Musica;
     }
 
-    public void setIdMusica(Integer idMusica) {
-        this.idMusica = idMusica;
+    public void setMusica(MusicasModel musica) {
+        Musica = musica;
     }
 }

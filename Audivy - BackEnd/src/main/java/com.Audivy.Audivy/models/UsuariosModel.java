@@ -3,6 +3,7 @@ package com.Audivy.Audivy.models;
 import com.Audivy.Audivy.enums.UsuariosPlano;
 import jakarta.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "TBUSUARIOS")
@@ -11,43 +12,35 @@ public class UsuariosModel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer idUsuario;
+
+    @OneToMany(mappedBy = "Usuario")
+    private List<PlaylistsModel> playlists;
+    @OneToMany(mappedBy = "Usuario")
+    private List<AlbunsModel> albuns;
+    @OneToMany(mappedBy = "Usuario")
+    private List<MusicasModel> musicas;
+
     private String nmUsuario;
     private String dsEmail;
     private String dsSenha;
     private String tpUsuario;
     private UsuariosPlano dsPlano;
 
-    public Integer getId() {
-        return id;
+    public Integer getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIdUsuario(Integer idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
-    public String getNmUsuario() {
-        return nmUsuario;
+    public UsuariosPlano getDsPlano() {
+        return dsPlano;
     }
 
-    public void setNmUsuario(String nmUsuario) {
-        this.nmUsuario = nmUsuario;
-    }
-
-    public String getDsEmail() {
-        return dsEmail;
-    }
-
-    public void setDsEmail(String dsEmail) {
-        this.dsEmail = dsEmail;
-    }
-
-    public String getDsSenha() {
-        return dsSenha;
-    }
-
-    public void setDsSenha(String dsSenha) {
-        this.dsSenha = dsSenha;
+    public void setDsPlano(UsuariosPlano dsPlano) {
+        this.dsPlano = dsPlano;
     }
 
     public String getTpUsuario() {
@@ -58,11 +51,51 @@ public class UsuariosModel implements Serializable {
         this.tpUsuario = tpUsuario;
     }
 
-    public UsuariosPlano getDsPlano() {
-        return dsPlano;
+    public List<AlbunsModel> getAlbuns() {
+        return albuns;
     }
 
-    public void setDsPlano(UsuariosPlano dsPlano) {
-        this.dsPlano = dsPlano;
+    public void setAlbuns(List<AlbunsModel> albuns) {
+        this.albuns = albuns;
+    }
+
+    public List<PlaylistsModel> getPlaylists() {
+        return playlists;
+    }
+
+    public void setPlaylists(List<PlaylistsModel> playlists) {
+        this.playlists = playlists;
+    }
+
+    public List<MusicasModel> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(List<MusicasModel> musicas) {
+        this.musicas = musicas;
+    }
+
+    public String getDsSenha() {
+        return dsSenha;
+    }
+
+    public void setDsSenha(String dsSenha) {
+        this.dsSenha = dsSenha;
+    }
+
+    public String getDsEmail() {
+        return dsEmail;
+    }
+
+    public void setDsEmail(String dsEmail) {
+        this.dsEmail = dsEmail;
+    }
+
+    public String getNmUsuario() {
+        return nmUsuario;
+    }
+
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
     }
 }

@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface PlaylistsRepository extends JpaRepository<PlaylistsModel, Integer> {
-    Optional<PlaylistsModel> findById(int id);
+    Optional<PlaylistsModel> findByIdPlaylist(int idPlaylist);
 
-    Optional<PlaylistsModel> findAllById(int id);
+    Optional<PlaylistsModel> findAllByIdPlaylist(int idPlaylist);
 }

@@ -10,7 +10,7 @@ import java.util.Optional;
 
 @Repository
 public interface UsuariosRepository extends JpaRepository<UsuariosModel, Integer> {
-    Optional<UsuariosModel> findById(int id);
+    Optional<UsuariosModel> findByIdUsuario(int idUsuario);
 
-    Optional<UsuariosModel> findAllById(int id);
+    Optional<UsuariosModel> findAllByIdUsuario(int idUsuario);
 }
