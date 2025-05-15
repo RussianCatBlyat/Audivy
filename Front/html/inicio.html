@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audivy - Sua música em um só lugar</title>
+    <link rel="stylesheet" href="/Front/css/inicio.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">Audivy</div>
+        <ul class="nav-menu">
+            <li class="active"><i>🏠</i> Início</li>
+            <li><i>🔍</i> Buscar</li>
+            <li><i>📚</i> Sua Biblioteca</li>
+        </ul>
+
+        <ul class="nav-menu">
+            <li><i>➕</i> Criar playlist</li>
+            <li><i>❤️</i> Músicas Curtidas</li>
+        </ul>
+
+        <div class="divider"></div>
+
+        <div class="playlists">
+            <h2>PLAYLISTS</h2>
+            <div class="playlist-item">Músicas para programar</div>
+            <div class="playlist-item">Rock Clássico</div>
+            <div class="playlist-item">Favoritas do Momento</div>
+            <div class="playlist-item">Acústicas</div>
+            <div class="playlist-item">Top Brasil</div>
+            <div class="playlist-item">Lançamentos da Semana</div>
+            <div class="playlist-item">Workout Hits</div>
+            <div class="playlist-item">Festa em Casa</div>
+        </div>
+    </div>
+
+    <div class="main-view">
+        <div class="top-bar">
+            <div class="nav-buttons">
+                <div class="nav-button">←</div>
+                <div class="nav-button">→</div>
+            </div>
+
+            <div class="user-menu">
+                <span>Usuário</span>
+                <div class="user-avatar"></div>
+            </div>
+        </div>
+
+        <h1 class="greeting">Boa tarde</h1>
+
+        <div class="content-section">
+            <h2 class="section-title">Tocadas recentemente</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Daily Mix 1</div>
+                    <div class="card-description">Seu mix diário de músicas que você vai amar</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Descobertas da Semana</div>
+                    <div class="card-description">Músicas novas baseadas no seu gosto</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Top Hits Brasil</div>
+                    <div class="card-description">Os maiores sucessos do momento</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Throwback</div>
+                    <div class="card-description">Músicas que marcaram época</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Acústico</div>
+                    <div class="card-description">As melhores versões acústicas</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Indie Mix</div>
+                    <div class="card-description">O melhor do indie para você</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2 class="section-title">Feito para você</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Radar de Novidades</div>
+                    <div class="card-description">Lançamentos dos artistas que você segue</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Chill Mix</div>
+                    <div class="card-description">Relaxe com estas músicas suaves</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Energy Boost</div>
+                    <div class="card-description">Músicas para te dar energia</div>
+                </div>
+                <div class="card">
+                    <div class="card-img">
+                        <div class="play-button">▶</div>
+                    </div>
+                    <div class="card-title">Mood Booster</div>
+                    <div class="card-description">Músicas para melhorar seu humor</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="player">
+        <div class="now-playing">
+            <div class="now-playing-img"></div>
+            <div class="now-playing-info">
+                <div class="now-playing-title">Nome da música</div>
+                <div class="now-playing-artist">Nome do artista</div>
+            </div>
+            <div style="margin-left: 16px;">❤️</div>
+        </div>
+
+        <div class="player-controls">
+            <div class="control-buttons">
+                <div>🔀</div>
+                <div>⏮️</div>
+                <div class="play-pause">▶</div>
+                <div>⏭️</div>
+                <div>🔁</div>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-time">0:00</div>
+                <div class="progress-track">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-time">3:45</div>
+            </div>
+        </div>
+
+        <div class="volume-controls">
+            <div>🎵</div>
+            <div>📃</div>
+            <div>🔊</div>
+            <div class="volume-track">
+                <div class="volume-fill"></div>
+            </div>
+        </div>
+    </div>
+    <!--oi-->
+
+    <script src="/Front/js/inicio.js"></script>
+    
+</body>
+</html>
