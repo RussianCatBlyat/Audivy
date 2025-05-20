@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface AlbunsRepository extends JpaRepository<AlbunsModel, Integer> {
-    Optional<AlbunsModel> findByIdAlbuns(int idAlbum);
+    Optional<AlbunsModel> findByIdAlbum(int idAlbum);
 
-    Optional<AlbunsModel> findAllByIdAlbuns(int idAlbum);
+    Optional<AlbunsModel> findAllByIdAlbum(int idAlbum);
 }
