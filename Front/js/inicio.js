@@ -34,6 +34,6 @@ playPauseButton.addEventListener('click', function() {
     } else {
         this.textContent = '▶';
     }
-    //ola
+    
 });
 });
