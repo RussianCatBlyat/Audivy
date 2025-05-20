@@ -14,6 +14,7 @@ public class MusicasModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idMusica;
+
     private String nmTitulo;
     private String dsDuracao;
     private String arqAudio;

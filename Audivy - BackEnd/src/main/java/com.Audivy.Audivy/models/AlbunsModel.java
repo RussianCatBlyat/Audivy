@@ -13,6 +13,7 @@ public class AlbunsModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idAlbum;
+
     private String nmTitulo;
     private Date dtLancamento;
 

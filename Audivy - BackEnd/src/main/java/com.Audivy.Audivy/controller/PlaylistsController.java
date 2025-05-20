@@ -33,19 +33,18 @@ public class PlaylistsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(playlistsRepository.save(PlaylistModel));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getOnePlaylist(@PathVariable(value ="id") int id) {
-        Optional<PlaylistsModel> Playlists0 = playlistsRepository.findById(id);
+    @GetMapping("/{idPlaylist}")
+    public ResponseEntity<Object> getOnePlaylist(@PathVariable(value ="idPlaylist") int idPlaylist) {
+        Optional<PlaylistsModel> Playlists0 = playlistsRepository.findById(idPlaylist);
         if (Playlists0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Playlist não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Playlists0.get());
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Object> inserirPlaylist(@PathVariable(value = "id") int id, @RequestBody @Valid PlaylistsDto PlaylistsDto) {
-
-        Optional<PlaylistsModel> Playlists0 = playlistsRepository.findById(id);
+    @PostMapping("/{idPlaylist}")
+    public ResponseEntity<Object> inserirPlaylist(@PathVariable(value = "idPlaylist") int idPlaylist, @RequestBody @Valid PlaylistsDto PlaylistsDto) {
+        Optional<PlaylistsModel> Playlists0 = playlistsRepository.findById(idPlaylist);
         if (Playlists0.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Playlist não Encontrado");
 
@@ -54,9 +53,10 @@ public class PlaylistsController {
         BeanUtils.copyProperties(PlaylistsDto, PlaylistModel);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(playlistsRepository.save(PlaylistModel));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deletePlaylist(@PathVariable(value ="id") int id) {
-        Optional<PlaylistsModel> Playlist0 = playlistsRepository.findAllById(id);
+
+    @DeleteMapping("/{idPlaylist}")
+    public ResponseEntity<Object> deletePlaylist(@PathVariable(value ="idPlaylist") int idPlaylist) {
+        Optional<PlaylistsModel> Playlist0 = playlistsRepository.findById(idPlaylist);
         if (Playlist0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.OK).body("Playlist não encontrado");
         }
@@ -64,9 +64,9 @@ public class PlaylistsController {
         return ResponseEntity.status(HttpStatus.OK).body("Playlist removido");
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> atualizarPlaylist(@PathVariable(value = "id") int id, @RequestBody PlaylistsDto playlistsDto) {
-        Optional<PlaylistsModel> playlistOptional = playlistsRepository.findById(id);
+    @PutMapping("/{idPlaylist}")
+    public ResponseEntity<Object> atualizarPlaylist(@PathVariable(value = "idPlaylist") int idPlaylist, @RequestBody PlaylistsDto playlistsDto) {
+        Optional<PlaylistsModel> playlistOptional = playlistsRepository.findById(idPlaylist);
         if (playlistOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Playlist não encontrado");
         }

@@ -13,6 +13,7 @@ public class PlaylistsModel implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPlaylist;
+
     private String nmTitulo;
 
     @ManyToOne(cascade = CascadeType.ALL)

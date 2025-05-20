@@ -32,19 +32,18 @@ public class UsuariosController {
         return ResponseEntity.status(HttpStatus.CREATED).body(usuariosRepository.save(UsuarioModel));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getOneUsuario(@PathVariable(value ="id") int id) {
-        Optional<UsuariosModel> Usuarios0 = usuariosRepository.findById(id);
+    @GetMapping("/{idUsuario}")
+    public ResponseEntity<Object> getOneUsuario(@PathVariable(value ="idUsuario") int idUsuario) {
+        Optional<UsuariosModel> Usuarios0 = usuariosRepository.findById(idUsuario);
         if (Usuarios0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Usuarios0.get());
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Object> inserirUsuario(@PathVariable(value = "id") int id, @RequestBody @Valid UsuariosDto UsuariosDto) {
-
-        Optional<UsuariosModel> Usuarios0 = usuariosRepository.findById(id);
+    @PostMapping("/{idUsuario}")
+    public ResponseEntity<Object> inserirUsuario(@PathVariable(value = "idUsuario") int idUsuario, @RequestBody @Valid UsuariosDto UsuariosDto) {
+        Optional<UsuariosModel> Usuarios0 = usuariosRepository.findById(idUsuario);
         if (Usuarios0.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não Encontrado");
 
@@ -53,9 +52,10 @@ public class UsuariosController {
         BeanUtils.copyProperties(UsuariosDto, UsuarioModel);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(usuariosRepository.save(UsuarioModel));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteUsuario(@PathVariable(value ="id") int id) {
-        Optional<UsuariosModel> Usuario0 = usuariosRepository.findAllById(id);
+
+    @DeleteMapping("/{idUsuario}")
+    public ResponseEntity<Object> deleteUsuario(@PathVariable(value ="idUsuario") int idUsuario) {
+        Optional<UsuariosModel> Usuario0 = usuariosRepository.findById(idUsuario);
         if (Usuario0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.OK).body("Usuario não encontrado");
         }
@@ -63,9 +63,9 @@ public class UsuariosController {
         return ResponseEntity.status(HttpStatus.OK).body("Usuario removido");
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> atualizarUsuario(@PathVariable(value = "id") int id, @RequestBody UsuariosDto usuariosDto) {
-        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(id);
+    @PutMapping("/{idUsuario}")
+    public ResponseEntity<Object> atualizarUsuario(@PathVariable(value = "idUsuario") int idUsuario, @RequestBody UsuariosDto usuariosDto) {
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(idUsuario);
         if (usuarioOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não encontrado");
         }

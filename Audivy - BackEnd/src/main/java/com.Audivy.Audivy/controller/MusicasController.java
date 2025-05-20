@@ -33,19 +33,18 @@ public class MusicasController {
         return ResponseEntity.status(HttpStatus.CREATED).body(musicasRepository.save(MusicaModel));
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Object> getOneMusica(@PathVariable(value ="id") int id) {
-        Optional<MusicasModel> Musicas0 = musicasRepository.findById(id);
+    @GetMapping("/{idMusica}")
+    public ResponseEntity<Object> getOneMusica(@PathVariable(value ="idMusica") int idMusica) {
+        Optional<MusicasModel> Musicas0 = musicasRepository.findById(idMusica);
         if (Musicas0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Musica não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Musicas0.get());
     }
 
-    @PostMapping("/{id}")
-    public ResponseEntity<Object> inserirMusica(@PathVariable(value = "id") int id, @RequestBody @Valid MusicasDto MusicasDto) {
-
-        Optional<MusicasModel> Musicas0 = musicasRepository.findById(id);
+    @PostMapping("/{idMusica}")
+    public ResponseEntity<Object> inserirMusica(@PathVariable(value = "idMusica") int idMusica, @RequestBody @Valid MusicasDto MusicasDto) {
+        Optional<MusicasModel> Musicas0 = musicasRepository.findById(idMusica);
         if (Musicas0.isEmpty()){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Musica não Encontrado");
 
@@ -54,9 +53,10 @@ public class MusicasController {
         BeanUtils.copyProperties(MusicasDto, MusicaModel);
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(musicasRepository.save(MusicaModel));
     }
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Object> deleteMusica(@PathVariable(value ="id") int id) {
-        Optional<MusicasModel> Musica0 = musicasRepository.findAllById(id);
+
+    @DeleteMapping("/{idMusica}")
+    public ResponseEntity<Object> deleteMusica(@PathVariable(value ="idMusica") int idMusica) {
+        Optional<MusicasModel> Musica0 = musicasRepository.findById(idMusica);
         if (Musica0.isEmpty()) {
             return ResponseEntity.status(HttpStatus.OK).body("Musica não encontrado");
         }
@@ -64,9 +64,9 @@ public class MusicasController {
         return ResponseEntity.status(HttpStatus.OK).body("Musica removido");
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Object> atualizarMusica(@PathVariable(value = "id") int id, @RequestBody MusicasDto musicasDto) {
-        Optional<MusicasModel> musicaOptional = musicasRepository.findById(id);
+    @PutMapping("/{idMusica}")
+    public ResponseEntity<Object> atualizarMusica(@PathVariable(value = "idMusica") int idMusica, @RequestBody MusicasDto musicasDto) {
+        Optional<MusicasModel> musicaOptional = musicasRepository.findById(idMusica);
         if (musicaOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Musica não encontrado");
         }
