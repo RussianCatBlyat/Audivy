@@ -14,11 +14,11 @@ public class UsuariosModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
-    @OneToMany(mappedBy = "Usuario")
+    @OneToMany(mappedBy = "idUsuario")
     private List<PlaylistsModel> playlists;
-    @OneToMany(mappedBy = "Usuario")
+    @OneToMany(mappedBy = "idUsuario")
     private List<AlbunsModel> albuns;
-    @OneToMany(mappedBy = "Usuario")
+    @OneToMany(mappedBy = "idUsuario")
     private List<MusicasModel> musicas;
 
     private String nmUsuario;

@@ -19,9 +19,9 @@ public class AlbunsModel implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
-    private UsuariosModel Usuario;
+    private UsuariosModel idUsuario;
 
-    @OneToMany(mappedBy = "Album")
+    @OneToMany(mappedBy = "idAlbum")
     private List<MusicasModel> Musicas;
 
     public Integer getIdAlbum() {
@@ -32,12 +32,12 @@ public class AlbunsModel implements Serializable {
         this.idAlbum = idAlbum;
     }
 
-    public UsuariosModel getUsuario() {
-        return Usuario;
+    public String getNmTitulo() {
+        return nmTitulo;
     }
 
-    public void setUsuario(UsuariosModel usuario) {
-        Usuario = usuario;
+    public void setNmTitulo(String nmTitulo) {
+        this.nmTitulo = nmTitulo;
     }
 
     public Date getDtLancamento() {
@@ -48,12 +48,12 @@ public class AlbunsModel implements Serializable {
         this.dtLancamento = dtLancamento;
     }
 
-    public String getNmTitulo() {
-        return nmTitulo;
+    public UsuariosModel getIdUsuario() {
+        return idUsuario;
     }
 
-    public void setNmTitulo(String nmTitulo) {
-        this.nmTitulo = nmTitulo;
+    public void setIdUsuario(UsuariosModel idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public List<MusicasModel> getMusicas() {

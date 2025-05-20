@@ -2,6 +2,7 @@ package com.Audivy.Audivy.controller;
 
 import com.Audivy.Audivy.dto.AlbunsDto;
 import com.Audivy.Audivy.models.AlbunsModel;
+import com.Audivy.Audivy.models.UsuariosModel;
 import com.Audivy.Audivy.repositories.AlbunsRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;

@@ -22,13 +22,13 @@ public class MusicasModel implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAlbum")
-    private AlbunsModel Album;
+    private AlbunsModel idAlbum;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
-    private UsuariosModel Usuario;
+    private UsuariosModel idUsuario;
 
-    @OneToMany(mappedBy = "Musica")
+    @OneToMany(mappedBy = "idMusica")
     private List<PlaylistMusicasModel> playlistMusicas;
 
     public Integer getIdMusica() {
@@ -39,36 +39,12 @@ public class MusicasModel implements Serializable {
         this.idMusica = idMusica;
     }
 
-    public List<PlaylistMusicasModel> getPlaylistMusicas() {
-        return playlistMusicas;
+    public String getNmTitulo() {
+        return nmTitulo;
     }
 
-    public void setPlaylistMusicas(List<PlaylistMusicasModel> playlistMusicas) {
-        this.playlistMusicas = playlistMusicas;
-    }
-
-    public AlbunsModel getAlbum() {
-        return Album;
-    }
-
-    public void setAlbum(AlbunsModel album) {
-        Album = album;
-    }
-
-    public UsuariosModel getUsuario() {
-        return Usuario;
-    }
-
-    public void setUsuario(UsuariosModel usuario) {
-        Usuario = usuario;
-    }
-
-    public String getDsGenero() {
-        return dsGenero;
-    }
-
-    public void setDsGenero(String dsGenero) {
-        this.dsGenero = dsGenero;
+    public void setNmTitulo(String nmTitulo) {
+        this.nmTitulo = nmTitulo;
     }
 
     public String getDsDuracao() {
@@ -79,19 +55,43 @@ public class MusicasModel implements Serializable {
         this.dsDuracao = dsDuracao;
     }
 
-    public String getNmTitulo() {
-        return nmTitulo;
-    }
-
-    public void setNmTitulo(String nmTitulo) {
-        this.nmTitulo = nmTitulo;
-    }
-
     public String getArqAudio() {
         return arqAudio;
     }
 
     public void setArqAudio(String arqAudio) {
         this.arqAudio = arqAudio;
+    }
+
+    public String getDsGenero() {
+        return dsGenero;
+    }
+
+    public void setDsGenero(String dsGenero) {
+        this.dsGenero = dsGenero;
+    }
+
+    public AlbunsModel getIdAlbum() {
+        return idAlbum;
+    }
+
+    public void setIdAlbum(AlbunsModel idAlbum) {
+        this.idAlbum = idAlbum;
+    }
+
+    public UsuariosModel getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(UsuariosModel idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public List<PlaylistMusicasModel> getPlaylistMusicas() {
+        return playlistMusicas;
+    }
+
+    public void setPlaylistMusicas(List<PlaylistMusicasModel> playlistMusicas) {
+        this.playlistMusicas = playlistMusicas;
     }
 }

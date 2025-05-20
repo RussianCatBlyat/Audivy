@@ -15,11 +15,11 @@ public class PlaylistMusicasModel implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idPlaylist")
-    private PlaylistsModel Playlist;
+    private PlaylistsModel idPlaylist;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idMusica")
-    private MusicasModel Musica;
+    private MusicasModel idMusica;
 
     public Integer getIdPlaylistMusica() {
         return idPlaylistMusica;
@@ -29,19 +29,19 @@ public class PlaylistMusicasModel implements Serializable {
         this.idPlaylistMusica = idPlaylistMusica;
     }
 
-    public PlaylistsModel getPlaylist() {
-        return Playlist;
+    public PlaylistsModel getIdPlaylist() {
+        return idPlaylist;
     }
 
-    public void setPlaylist(PlaylistsModel playlist) {
-        Playlist = playlist;
+    public void setIdPlaylist(PlaylistsModel idPlaylist) {
+        this.idPlaylist = idPlaylist;
     }
 
-    public MusicasModel getMusica() {
-        return Musica;
+    public MusicasModel getIdMusica() {
+        return idMusica;
     }
 
-    public void setMusica(MusicasModel musica) {
-        Musica = musica;
+    public void setIdMusica(MusicasModel idMusica) {
+        this.idMusica = idMusica;
     }
 }
