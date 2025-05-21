@@ -3,175 +3,178 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audivy - Sua música em um só lugar</title>
+    <title>Audivy - Sua nova experiência musical</title>
     <link rel="stylesheet" href="/css/inicio.css">
 </head>
 <body>
-    <div class="sidebar">
-        <div class="logo">Audivy</div>
-        <ul class="nav-menu">
-            <li class="active"><i>🏠</i> Início</li>
-            <li><i>🔍</i> Buscar</li>
-            <li><i>📚</i> Sua Biblioteca</li>
-        </ul>
-
-        <ul class="nav-menu">
-            <li><i>➕</i> Criar playlist</li>
-            <li><i>❤️</i> Músicas Curtidas</li>
-        </ul>
-
-        <div class="divider"></div>
-
-        <div class="playlists">
-            <h2>PLAYLISTS</h2>
-            <div class="playlist-item">Músicas para programar</div>
-            <div class="playlist-item">Rock Clássico</div>
-            <div class="playlist-item">Favoritas do Momento</div>
-            <div class="playlist-item">Acústicas</div>
-            <div class="playlist-item">Top Brasil</div>
-            <div class="playlist-item">Lançamentos da Semana</div>
-            <div class="playlist-item">Workout Hits</div>
-            <div class="playlist-item">Festa em Casa</div>
+ 
+    <aside class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">A</div>
+            <h1>Audivy</h1>
         </div>
-    </div>
 
-    <div class="main-view">
-        <div class="top-bar">
-            <div class="nav-buttons">
-                <div class="nav-button">←</div>
-                <div class="nav-button">→</div>
+        <nav class="main-nav">
+            <a href="#" class="nav-item active">Início</a>
+            <a href="#" class="nav-item">Explorar</a>
+            <a href="#" class="nav-item">Recentes</a>
+            <a href="#" class="nav-item">Salvos</a>
+            <a href="#" class="nav-item">Vídeos</a>
+        </nav>
+
+        <div class="nav-section">
+            <h3 class="nav-title">Sua biblioteca</h3>
+            <a href="#" class="nav-item">Playlists</a>
+            <a href="#" class="nav-item">Artistas</a>
+            <a href="#" class="nav-item">Álbuns</a>
+        </div>
+
+        <div class="nav-section">
+            <h3 class="nav-title">Playlists</h3>
+            <div class="playlist">
+                <div class="playlist-image">T</div>
+                <div class="playlist-info">
+                    <h4>Top Hits 2025</h4>
+                    <p>Playlist • Audivy</p>
+                </div>
+            </div>
+            <div class="playlist">
+                <div class="playlist-image">E</div>
+                <div class="playlist-info">
+                    <h4>Eletrônica Mix</h4>
+                    <p>Playlist • Audivy</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="header">
+            <div class="search-bar">
+                <input type="text" placeholder="O que você quer ouvir?">
             </div>
 
-            <div class="user-menu">
+            <div class="user-profile">
+                <div class="avatar">U</div>
                 <span>Usuário</span>
-                <div class="user-avatar"></div>
             </div>
-        </div>
+        </header>
 
-        <h1 class="greeting">Boa tarde</h1>
+        <section class="welcome-section">
+            <h2 class="welcome-message">Bem-vindo ao Audivy</h2>
+            <div class="wave-visualizer">
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+                <div class="wave-bar"></div>
+            </div>
+        </section>
 
-        <div class="content-section">
-            <h2 class="section-title">Tocadas recentemente</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-img">
+        <section>
+            <h2 class="section-title">Recomendado para você</h2>
+            
+            <div class="cards-container">
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/150/150" alt="Capa do álbum">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="card-title">Daily Mix 1</div>
-                    <div class="card-description">Seu mix diário de músicas que você vai amar</div>
+                    <h3 class="card-title">Summer Hits</h3>
+                    <p class="card-subtitle">As melhores do verão</p>
                 </div>
-                <div class="card">
-                    <div class="card-img">
+                
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/150/150" alt="Capa do álbum">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="card-title">Descobertas da Semana</div>
-                    <div class="card-description">Músicas novas baseadas no seu gosto</div>
+                    <h3 class="card-title">Pop Mix</h3>
+                    <p class="card-subtitle">Os hits do momento</p>
                 </div>
-                <div class="card">
-                    <div class="card-img">
+                
+                <div class="music-card">
+                    <div class="card-image">
+                        <img src="/api/placeholder/150/150" alt="Capa do álbum">
                         <div class="play-button">▶</div>
                     </div>
-                    <div class="card-title">Top Hits Brasil</div>
-                    <div class="card-description">Os maiores sucessos do momento</div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="card-title">Throwback</div>
-                    <div class="card-description">Músicas que marcaram época</div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="card-title">Acústico</div>
-                    <div class="card-description">As melhores versões acústicas</div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="card-title">Indie Mix</div>
-                    <div class="card-description">O melhor do indie para você</div>
+                    <h3 class="card-title">Lo-Fi Beats</h3>
+                    <p class="card-subtitle">Para estudar e relaxar</p>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <div class="content-section">
-            <h2 class="section-title">Feito para você</h2>
-            <div class="card-grid">
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
+        <section class="trending-tracks">
+            <h2 class="section-title">Tendências do momento</h2>
+            
+            <div class="track-list">
+                <div class="track-item">
+                    <div class="track-number">1</div>
+                    <div class="track-image">
+                        <img src="/api/placeholder/60/60" alt="Capa da música">
                     </div>
-                    <div class="card-title">Radar de Novidades</div>
-                    <div class="card-description">Lançamentos dos artistas que você segue</div>
+                    <div class="track-info">
+                        <h3 class="track-title">Título da Música</h3>
+                        <p class="track-artist">Nome do Artista</p>
+                    </div>
+                    <div class="track-album">Nome do Álbum</div>
+                    <div class="track-duration">3:45</div>
                 </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
+                
+                <div class="track-item">
+                    <div class="track-number">2</div>
+                    <div class="track-image">
+                        <img src="/api/placeholder/60/60" alt="Capa da música">
                     </div>
-                    <div class="card-title">Chill Mix</div>
-                    <div class="card-description">Relaxe com estas músicas suaves</div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
+                    <div class="track-info">
+                        <h3 class="track-title">Nome da Música Popular</h3>
+                        <p class="track-artist">Artista Famoso</p>
                     </div>
-                    <div class="card-title">Energy Boost</div>
-                    <div class="card-description">Músicas para te dar energia</div>
-                </div>
-                <div class="card">
-                    <div class="card-img">
-                        <div class="play-button">▶</div>
-                    </div>
-                    <div class="card-title">Mood Booster</div>
-                    <div class="card-description">Músicas para melhorar seu humor</div>
+                    <div class="track-album">Álbum Recente</div>
+                    <div class="track-duration">4:20</div>
                 </div>
             </div>
-        </div>
-    </div>
+        </section>
+    </main>
 
-    <div class="player">
+    <!-- Player -->
+    <footer class="player">
         <div class="now-playing">
-            <div class="now-playing-img"></div>
-            <div class="now-playing-info">
-                <div class="now-playing-title">Nome da música</div>
-                <div class="now-playing-artist">Nome do artista</div>
+            <img src="/api/placeholder/60/60" alt="Música atual" class="current-track-image">
+            <div class="current-track-info">
+                <h4>Nome da Música Atual</h4>
+                <p>Artista da Música</p>
             </div>
-            <div style="margin-left: 16px;">❤️</div>
+            <button class="like-button">♥</button>
         </div>
 
         <div class="player-controls">
             <div class="control-buttons">
-                <div>🔀</div>
-                <div>⏮️</div>
-                <div class="play-pause">▶</div>
-                <div>⏭️</div>
-                <div>🔁</div>
+                <button class="control-button">⟲</button>
+                <button class="control-button">◀◀</button>
+                <button class="control-button play">▶</button>
+                <button class="control-button">▶▶</button>
+                <button class="control-button">⟳</button>
             </div>
             <div class="progress-bar">
-                <div class="progress-time">0:00</div>
-                <div class="progress-track">
-                    <div class="progress-fill"></div>
+                <span class="current-time">0:45</span>
+                <div class="progress-container">
+                    <div class="progress-inner"></div>
                 </div>
-                <div class="progress-time">3:45</div>
+                <span class="total-time">3:30</span>
             </div>
         </div>
 
-        <div class="volume-controls">
-            <div>🎵</div>
-            <div>📃</div>
-            <div>🔊</div>
-            <div class="volume-track">
-                <div class="volume-fill"></div>
+        <div class="player-options">
+            <button class="option-button">≡</button>
+            <button class="option-button">🔊</button>
+            <div class="volume-slider">
+                <div class="volume-level"></div>
             </div>
         </div>
-    </div>
-
+    </footer>
 
     <script src="/js/inicio.js"></script>
-    
 </body>
 </html>

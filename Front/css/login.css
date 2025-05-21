@@ -184,7 +184,7 @@ footer a {
     color: #b3b3b3;
 }
 
-/* Para dispositivos móveis */
+/* Port pros dispositivos móveis */
 @media (max-width: 480px) {
     .login-container {
         border-radius: 0;
@@ -201,4 +201,18 @@ footer a {
     .login-btn {
         width: 100%;
     }
+
+    .logo {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+    
+    .logo-image {
+        width: 80px;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
 }
