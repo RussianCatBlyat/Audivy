@@ -1,5 +1,7 @@
 package com.Audivy.Audivy.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import java.util.List;
@@ -22,13 +24,16 @@ public class MusicasModel implements Serializable {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idAlbum")
+    @JsonBackReference
     private AlbunsModel idAlbum;
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "idUsuario")
+    @JsonBackReference
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idMusica")
+    @JsonManagedReference
     private List<PlaylistMusicasModel> playlistMusicas;
 
     public Integer getIdMusica() {

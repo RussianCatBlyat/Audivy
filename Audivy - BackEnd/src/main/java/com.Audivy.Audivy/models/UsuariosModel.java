@@ -1,6 +1,7 @@
 package com.Audivy.Audivy.models;
 
 import com.Audivy.Audivy.enums.UsuariosPlano;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -15,10 +16,13 @@ public class UsuariosModel implements Serializable {
     private Integer idUsuario;
 
     @OneToMany(mappedBy = "idUsuario")
+    @JsonManagedReference
     private List<PlaylistsModel> playlists;
     @OneToMany(mappedBy = "idUsuario")
+    @JsonManagedReference
     private List<AlbunsModel> albuns;
     @OneToMany(mappedBy = "idUsuario")
+    @JsonManagedReference
     private List<MusicasModel> musicas;
 
     private String nmUsuario;
@@ -35,20 +39,12 @@ public class UsuariosModel implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public UsuariosPlano getDsPlano() {
-        return dsPlano;
+    public List<PlaylistsModel> getPlaylists() {
+        return playlists;
     }
 
-    public void setDsPlano(UsuariosPlano dsPlano) {
-        this.dsPlano = dsPlano;
-    }
-
-    public String getTpUsuario() {
-        return tpUsuario;
-    }
-
-    public void setTpUsuario(String tpUsuario) {
-        this.tpUsuario = tpUsuario;
+    public void setPlaylists(List<PlaylistsModel> playlists) {
+        this.playlists = playlists;
     }
 
     public List<AlbunsModel> getAlbuns() {
@@ -59,14 +55,6 @@ public class UsuariosModel implements Serializable {
         this.albuns = albuns;
     }
 
-    public List<PlaylistsModel> getPlaylists() {
-        return playlists;
-    }
-
-    public void setPlaylists(List<PlaylistsModel> playlists) {
-        this.playlists = playlists;
-    }
-
     public List<MusicasModel> getMusicas() {
         return musicas;
     }
@@ -75,12 +63,12 @@ public class UsuariosModel implements Serializable {
         this.musicas = musicas;
     }
 
-    public String getDsSenha() {
-        return dsSenha;
+    public String getNmUsuario() {
+        return nmUsuario;
     }
 
-    public void setDsSenha(String dsSenha) {
-        this.dsSenha = dsSenha;
+    public void setNmUsuario(String nmUsuario) {
+        this.nmUsuario = nmUsuario;
     }
 
     public String getDsEmail() {
@@ -91,11 +79,27 @@ public class UsuariosModel implements Serializable {
         this.dsEmail = dsEmail;
     }
 
-    public String getNmUsuario() {
-        return nmUsuario;
+    public String getDsSenha() {
+        return dsSenha;
     }
 
-    public void setNmUsuario(String nmUsuario) {
-        this.nmUsuario = nmUsuario;
+    public void setDsSenha(String dsSenha) {
+        this.dsSenha = dsSenha;
+    }
+
+    public String getTpUsuario() {
+        return tpUsuario;
+    }
+
+    public void setTpUsuario(String tpUsuario) {
+        this.tpUsuario = tpUsuario;
+    }
+
+    public UsuariosPlano getDsPlano() {
+        return dsPlano;
+    }
+
+    public void setDsPlano(UsuariosPlano dsPlano) {
+        this.dsPlano = dsPlano;
     }
 }
