@@ -1,12 +1,15 @@
 package com.Audivy.Audivy.controller;
 
 import com.Audivy.Audivy.dto.AlbunsDto;
+import com.Audivy.Audivy.dto.UsuariosDto;
 import com.Audivy.Audivy.models.AlbunsModel;
 import com.Audivy.Audivy.models.UsuariosModel;
 import com.Audivy.Audivy.repositories.AlbunsRepository;
+import com.Audivy.Audivy.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +24,8 @@ public class AlbunsController {
 
     @Autowired
     AlbunsRepository albunsRepository;
+    UsuariosRepository usuariosRepository;
+    UsuariosModel usuariosModel;
 
     @GetMapping
     public ResponseEntity<List<AlbunsModel>> getAllAlbum() {
@@ -44,15 +49,19 @@ public class AlbunsController {
     }
 
     @PostMapping("/{idAlbum}")
-    public ResponseEntity<Object> inserirAlbum(@PathVariable(value = "idAlbum") int idAlbum, @RequestBody @Valid AlbunsDto AlbunsDto) {
-        Optional<AlbunsModel> Albuns0 = albunsRepository.findById(idAlbum);
-        if (Albuns0.isEmpty()){
+    public ResponseEntity<Object> inserirAlbum(@PathVariable(value = "idAlbum") int idAlbum, @RequestBody @Valid AlbunsDto albunsDto) {
+        Optional<AlbunsModel> albunsOptional = albunsRepository.findById(idAlbum);
+        if (albunsOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Album não Encontrado");
-
         }
-        var AlbumModel = new AlbunsModel();
-        BeanUtils.copyProperties(AlbunsDto, AlbumModel);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(albunsRepository.save(AlbumModel));
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(usuariosModel.getIdUsuario());
+        if (usuarioOptional.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não Encontrado");
+        }
+        AlbunsModel albumModel = new AlbunsModel();
+        BeanUtils.copyProperties(albunsDto, albumModel);
+        albumModel.setIdUsuario(usuarioOptional.get());
+        return ResponseEntity.status(HttpStatus.OK).body(albunsRepository.save(albumModel));
     }
 
     @DeleteMapping("/{idAlbum}")

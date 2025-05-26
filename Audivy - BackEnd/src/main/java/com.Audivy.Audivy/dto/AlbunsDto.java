@@ -5,7 +5,10 @@ import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;
 
-public record AlbunsDto(@NotNull String nmTitulo, @NotNull Date dtLancamento, @NotNull UsuariosModel idUsuario) {
+public record AlbunsDto(
+        @NotNull String nmTitulo,
+        @NotNull Date dtLancamento,
+        @NotNull UsuariosModel idUsuario) {
 }
 
 
