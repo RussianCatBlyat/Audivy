@@ -24,8 +24,8 @@ public class MusicasModel implements Serializable {
     @JoinColumn(name = "idAlbum")
     private AlbunsModel idAlbum;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUsuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario", nullable = false)
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idMusica")

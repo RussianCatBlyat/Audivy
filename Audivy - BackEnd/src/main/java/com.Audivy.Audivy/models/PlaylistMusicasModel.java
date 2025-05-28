@@ -13,8 +13,8 @@ public class PlaylistMusicasModel implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPlaylistMusica;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idPlaylist")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario", nullable = false)
     private PlaylistsModel idPlaylist;
 
     @ManyToOne(cascade = CascadeType.ALL)

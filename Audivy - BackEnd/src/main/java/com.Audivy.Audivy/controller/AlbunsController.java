@@ -7,6 +7,7 @@ import com.Audivy.Audivy.models.UsuariosModel;
 import com.Audivy.Audivy.repositories.AlbunsRepository;
 import com.Audivy.Audivy.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
+import jdk.internal.org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
@@ -21,6 +22,8 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RequestMapping("/Albuns")
 public class AlbunsController {
+
+    BasicInterpreter entityManager;
 
     @Autowired
     AlbunsRepository albunsRepository;
@@ -54,12 +57,13 @@ public class AlbunsController {
         if (albunsOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Album não Encontrado");
         }
-        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(usuariosModel.getIdUsuario());
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(albunsDto.idUsuario());
         if (usuarioOptional.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não Encontrado");
         }
         AlbunsModel albumModel = new AlbunsModel();
-        BeanUtils.copyProperties(albunsDto, albumModel);
+        albumModel.setNmTitulo(albunsDto.nmTitulo());
+        albumModel.setDtLancamento(albunsDto.dtLancamento());
         albumModel.setIdUsuario(usuarioOptional.get());
         return ResponseEntity.status(HttpStatus.OK).body(albunsRepository.save(albumModel));
     }

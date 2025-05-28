@@ -16,8 +16,8 @@ public class PlaylistsModel implements Serializable {
 
     private String nmTitulo;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idUsuario")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "idUsuario", nullable = false)
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idPlaylist")
