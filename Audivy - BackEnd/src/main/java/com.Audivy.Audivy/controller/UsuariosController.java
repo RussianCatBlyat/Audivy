@@ -41,18 +41,6 @@ public class UsuariosController {
         return ResponseEntity.status(HttpStatus.OK).body(Usuarios0.get());
     }
 
-    @PostMapping("/{idUsuario}")
-    public ResponseEntity<Object> inserirUsuario(@PathVariable(value = "idUsuario") int idUsuario, @RequestBody @Valid UsuariosDto UsuariosDto) {
-        Optional<UsuariosModel> Usuarios0 = usuariosRepository.findById(idUsuario);
-        if (Usuarios0.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuario não Encontrado");
-
-        }
-        var UsuarioModel = new UsuariosModel();
-        BeanUtils.copyProperties(UsuariosDto, UsuarioModel);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(usuariosRepository.save(UsuarioModel));
-    }
-
     @DeleteMapping("/{idUsuario}")
     public ResponseEntity<Object> deleteUsuario(@PathVariable(value ="idUsuario") int idUsuario) {
         Optional<UsuariosModel> Usuario0 = usuariosRepository.findById(idUsuario);

@@ -1,7 +1,6 @@
 package com.Audivy.Audivy.controller;
 
 import com.Audivy.Audivy.dto.AlbunsDto;
-import com.Audivy.Audivy.dto.UsuariosDto;
 import com.Audivy.Audivy.models.AlbunsModel;
 import com.Audivy.Audivy.models.UsuariosModel;
 import com.Audivy.Audivy.repositories.AlbunsRepository;
@@ -10,7 +9,6 @@ import jakarta.validation.Valid;
 import jdk.internal.org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.support.SimpleJpaRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +35,11 @@ public class AlbunsController {
 
     @PostMapping
     public ResponseEntity<AlbunsModel> saveAlbum(@RequestBody @Valid AlbunsDto albunsDto) {
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(albunsDto.idUsuario());
         var AlbumModel = new AlbunsModel();
-        BeanUtils.copyProperties(albunsDto, AlbumModel);
+        AlbumModel.setNmTitulo(albunsDto.nmTitulo());
+        AlbumModel.setDtLancamento(albunsDto.dtLancamento());
+        AlbumModel.setIdUsuario(usuarioOptional.get());
         return ResponseEntity.status(HttpStatus.CREATED).body(albunsRepository.save(AlbumModel));
     }
 
@@ -49,23 +50,6 @@ public class AlbunsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Album não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Albuns0.get());
-    }
-
-    @PostMapping("/{idAlbum}")
-    public ResponseEntity<Object> inserirAlbum(@PathVariable(value = "idAlbum") int idAlbum, @RequestBody @Valid AlbunsDto albunsDto) {
-        Optional<AlbunsModel> albunsOptional = albunsRepository.findById(idAlbum);
-        if (albunsOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Album não Encontrado");
-        }
-        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(albunsDto.idUsuario());
-        if (usuarioOptional.isEmpty()) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Usuário não Encontrado");
-        }
-        AlbunsModel albumModel = new AlbunsModel();
-        albumModel.setNmTitulo(albunsDto.nmTitulo());
-        albumModel.setDtLancamento(albunsDto.dtLancamento());
-        albumModel.setIdUsuario(usuarioOptional.get());
-        return ResponseEntity.status(HttpStatus.OK).body(albunsRepository.save(albumModel));
     }
 
     @DeleteMapping("/{idAlbum}")
