@@ -7,19 +7,16 @@ import java.util.List;
 
 @Entity
 @Table(name = "TBUSUARIOS")
-public class UsuariosModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class UsuariosModel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
     @OneToMany(mappedBy = "idUsuario")
-    private List<PlaylistsModel> playlists;
+    private List<PlaylistsModel> dsPlaylists;
     @OneToMany(mappedBy = "idUsuario")
-    private List<AlbunsModel> albuns;
-    @OneToMany(mappedBy = "idUsuario")
-    private List<MusicasModel> musicas;
+    private List<AlbunsModel> dsAlbuns;
 
     private String nmUsuario;
     private String dsEmail;
@@ -35,28 +32,20 @@ public class UsuariosModel implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public List<PlaylistsModel> getPlaylists() {
-        return playlists;
+    public List<PlaylistsModel> getDsPlaylists() {
+        return dsPlaylists;
     }
 
-    public void setPlaylists(List<PlaylistsModel> playlists) {
-        this.playlists = playlists;
+    public void setDsPlaylists(List<PlaylistsModel> dsPlaylists) {
+        this.dsPlaylists = dsPlaylists;
     }
 
-    public List<AlbunsModel> getAlbuns() {
-        return albuns;
+    public List<AlbunsModel> getDsAlbuns() {
+        return dsAlbuns;
     }
 
-    public void setAlbuns(List<AlbunsModel> albuns) {
-        this.albuns = albuns;
-    }
-
-    public List<MusicasModel> getMusicas() {
-        return musicas;
-    }
-
-    public void setMusicas(List<MusicasModel> musicas) {
-        this.musicas = musicas;
+    public void setDsAlbuns(List<AlbunsModel> dsAlbuns) {
+        this.dsAlbuns = dsAlbuns;
     }
 
     public String getNmUsuario() {

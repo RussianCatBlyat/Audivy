@@ -7,8 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "TBPLAYLISTS")
-public class PlaylistsModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class PlaylistsModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -5,11 +5,12 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "TBALBUNS")
-public class AlbunsModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class AlbunsModel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,10 +21,12 @@ public class AlbunsModel implements Serializable {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonBackReference
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idAlbum")
-    private List<MusicasModel> Musicas;
+    @JsonManagedReference
+    private List<MusicasModel> dsMusicas;
 
     public Integer getIdAlbum() {
         return idAlbum;
@@ -57,11 +60,11 @@ public class AlbunsModel implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public List<MusicasModel> getMusicas() {
-        return Musicas;
+    public List<MusicasModel> getDsMusicas() {
+        return dsMusicas;
     }
 
-    public void setMusicas(List<MusicasModel> musicas) {
-        Musicas = musicas;
+    public void setDsMusicas(List<MusicasModel> dsMusicas) {
+        this.dsMusicas = dsMusicas;
     }
 }

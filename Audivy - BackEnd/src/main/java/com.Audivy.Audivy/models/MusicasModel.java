@@ -1,15 +1,12 @@
 package com.Audivy.Audivy.models;
 
 import jakarta.persistence.*;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import java.util.List;
 
-import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "TBMUSICAS")
-public class MusicasModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class MusicasModel  {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +26,7 @@ public class MusicasModel implements Serializable {
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idMusica")
-    private List<PlaylistMusicasModel> playlistMusicas;
+    private List<PlaylistMusicasModel> dsplaylistMusicas;
 
     public Integer getIdMusica() {
         return idMusica;
@@ -87,11 +84,11 @@ public class MusicasModel implements Serializable {
         this.idUsuario = idUsuario;
     }
 
-    public List<PlaylistMusicasModel> getPlaylistMusicas() {
-        return playlistMusicas;
+    public List<PlaylistMusicasModel> getDsplaylistMusicas() {
+        return dsplaylistMusicas;
     }
 
-    public void setPlaylistMusicas(List<PlaylistMusicasModel> playlistMusicas) {
-        this.playlistMusicas = playlistMusicas;
+    public void setDsplaylistMusicas(List<PlaylistMusicasModel> dsplaylistMusicas) {
+        this.dsplaylistMusicas = dsplaylistMusicas;
     }
 }
