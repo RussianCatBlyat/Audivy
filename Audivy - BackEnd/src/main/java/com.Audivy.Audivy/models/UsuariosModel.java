@@ -1,6 +1,7 @@
 package com.Audivy.Audivy.models;
 
 import com.Audivy.Audivy.enums.UsuariosPlano;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.List;
@@ -14,8 +15,10 @@ public class UsuariosModel  {
     private Integer idUsuario;
 
     @OneToMany(mappedBy = "idUsuario")
+    @JsonManagedReference
     private List<PlaylistsModel> dsPlaylists;
     @OneToMany(mappedBy = "idUsuario")
+    @JsonManagedReference
     private List<AlbunsModel> dsAlbuns;
 
     private String nmUsuario;

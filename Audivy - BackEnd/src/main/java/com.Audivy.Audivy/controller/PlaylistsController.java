@@ -2,7 +2,10 @@ package com.Audivy.Audivy.controller;
 
 import com.Audivy.Audivy.dto.PlaylistsDto;
 import com.Audivy.Audivy.models.PlaylistsModel;
+import com.Audivy.Audivy.models.UsuariosModel;
+import com.Audivy.Audivy.repositories.AlbunsRepository;
 import com.Audivy.Audivy.repositories.PlaylistsRepository;
+import com.Audivy.Audivy.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,8 @@ public class PlaylistsController {
 
     @Autowired
     PlaylistsRepository playlistsRepository;
+    @Autowired
+    UsuariosRepository usuariosRepository;
 
     @GetMapping
     public ResponseEntity<List<PlaylistsModel>> getAllPlaylist() {
@@ -28,8 +33,10 @@ public class PlaylistsController {
 
     @PostMapping
     public ResponseEntity<PlaylistsModel> savePlaylist(@RequestBody @Valid PlaylistsDto playlistsDto) {
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(playlistsDto.idUsuario());
         var PlaylistModel = new PlaylistsModel();
-        BeanUtils.copyProperties(playlistsDto, PlaylistModel);
+        PlaylistModel.setNmTitulo(playlistsDto.nmTitulo());
+        PlaylistModel.setIdUsuario(usuarioOptional.get());
         return ResponseEntity.status(HttpStatus.CREATED).body(playlistsRepository.save(PlaylistModel));
     }
 
@@ -40,18 +47,6 @@ public class PlaylistsController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Playlist não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Playlists0.get());
-    }
-
-    @PostMapping("/{idPlaylist}")
-    public ResponseEntity<Object> inserirPlaylist(@PathVariable(value = "idPlaylist") int idPlaylist, @RequestBody @Valid PlaylistsDto PlaylistsDto) {
-        Optional<PlaylistsModel> Playlists0 = playlistsRepository.findById(idPlaylist);
-        if (Playlists0.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Playlist não Encontrado");
-
-        }
-        var PlaylistModel = new PlaylistsModel();
-        BeanUtils.copyProperties(PlaylistsDto, PlaylistModel);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(playlistsRepository.save(PlaylistModel));
     }
 
     @DeleteMapping("/{idPlaylist}")

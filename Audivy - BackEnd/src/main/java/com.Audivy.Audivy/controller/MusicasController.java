@@ -1,8 +1,12 @@
 package com.Audivy.Audivy.controller;
 
 import com.Audivy.Audivy.dto.MusicasDto;
+import com.Audivy.Audivy.models.AlbunsModel;
 import com.Audivy.Audivy.models.MusicasModel;
+import com.Audivy.Audivy.models.UsuariosModel;
+import com.Audivy.Audivy.repositories.AlbunsRepository;
 import com.Audivy.Audivy.repositories.MusicasRepository;
+import com.Audivy.Audivy.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +24,10 @@ public class MusicasController {
 
     @Autowired
     MusicasRepository musicasRepository;
+    @Autowired
+    UsuariosRepository usuariosRepository;
+    @Autowired
+    AlbunsRepository albunsRepository;
 
     @GetMapping
     public ResponseEntity<List<MusicasModel>> getAllMusica() {
@@ -28,8 +36,15 @@ public class MusicasController {
 
     @PostMapping
     public ResponseEntity<MusicasModel> saveMusica(@RequestBody @Valid MusicasDto musicasDto) {
+        Optional<AlbunsModel> albumOptional = albunsRepository.findById(musicasDto.idAlbum());
+        Optional<UsuariosModel> usuarioOptional = usuariosRepository.findById(musicasDto.idUsuario());
         var MusicaModel = new MusicasModel();
-        BeanUtils.copyProperties(musicasDto, MusicaModel);
+        MusicaModel.setNmTitulo(musicasDto.nmTitulo());
+        MusicaModel.setDsDuracao(musicasDto.dsDuracao());
+        MusicaModel.setArqAudio(musicasDto.arqAudio());
+        MusicaModel.setDsGenero(musicasDto.dsGenero());
+        MusicaModel.setIdAlbum(albumOptional.get());
+        MusicaModel.setIdUsuario(usuarioOptional.get());
         return ResponseEntity.status(HttpStatus.CREATED).body(musicasRepository.save(MusicaModel));
     }
 
@@ -40,18 +55,6 @@ public class MusicasController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Musica não Encontrado");
         }
         return ResponseEntity.status(HttpStatus.OK).body(Musicas0.get());
-    }
-
-    @PostMapping("/{idMusica}")
-    public ResponseEntity<Object> inserirMusica(@PathVariable(value = "idMusica") int idMusica, @RequestBody @Valid MusicasDto MusicasDto) {
-        Optional<MusicasModel> Musicas0 = musicasRepository.findById(idMusica);
-        if (Musicas0.isEmpty()){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Musica não Encontrado");
-
-        }
-        var MusicaModel = new MusicasModel();
-        BeanUtils.copyProperties(MusicasDto, MusicaModel);
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(musicasRepository.save(MusicaModel));
     }
 
     @DeleteMapping("/{idMusica}")

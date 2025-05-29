@@ -1,5 +1,7 @@
 package com.Audivy.Audivy.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -17,10 +19,12 @@ public class PlaylistsModel {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonBackReference
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idPlaylist")
-    private List<PlaylistMusicasModel> playlistMusicas;
+    @JsonManagedReference
+    private List<PlaylistMusicasModel> dsplaylistMusicas;
 
     public Integer getIdPlaylist() {
         return idPlaylist;
@@ -29,6 +33,7 @@ public class PlaylistsModel {
     public void setIdPlaylist(Integer idPlaylist) {
         this.idPlaylist = idPlaylist;
     }
+
 
     public String getNmTitulo() {
         return nmTitulo;
@@ -46,11 +51,11 @@ public class PlaylistsModel {
         this.idUsuario = idUsuario;
     }
 
-    public List<PlaylistMusicasModel> getPlaylistMusicas() {
-        return playlistMusicas;
+    public List<PlaylistMusicasModel> getDsplaylistMusicas() {
+        return dsplaylistMusicas;
     }
 
-    public void setPlaylistMusicas(List<PlaylistMusicasModel> playlistMusicas) {
-        this.playlistMusicas = playlistMusicas;
+    public void setDsplaylistMusicas(List<PlaylistMusicasModel> dsplaylistMusicas) {
+        this.dsplaylistMusicas = dsplaylistMusicas;
     }
 }

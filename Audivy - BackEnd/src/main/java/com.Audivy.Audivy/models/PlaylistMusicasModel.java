@@ -1,5 +1,6 @@
 package com.Audivy.Audivy.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -14,10 +15,12 @@ public class PlaylistMusicasModel   {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonBackReference
     private PlaylistsModel idPlaylist;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idMusica")
+    @JoinColumn(name = "idMusica", nullable = false)
+    @JsonBackReference
     private MusicasModel idMusica;
 
     public Integer getIdPlaylistMusica() {

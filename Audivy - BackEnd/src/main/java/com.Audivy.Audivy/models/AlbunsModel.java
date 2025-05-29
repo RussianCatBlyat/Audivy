@@ -1,8 +1,6 @@
 package com.Audivy.Audivy.models;
 
-import com.Audivy.Audivy.models.UsuariosModel;
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonBackReference;

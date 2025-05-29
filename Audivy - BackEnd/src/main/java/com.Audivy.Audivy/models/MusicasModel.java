@@ -1,8 +1,9 @@
 package com.Audivy.Audivy.models;
 
 import jakarta.persistence.*;
-
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 @Table(name = "TBMUSICAS")
@@ -18,14 +19,17 @@ public class MusicasModel  {
     private String dsGenero;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "idAlbum")
+    @JoinColumn(name = "idAlbum", nullable = false)
+    @JsonBackReference
     private AlbunsModel idAlbum;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idUsuario", nullable = false)
+    @JsonBackReference
     private UsuariosModel idUsuario;
 
     @OneToMany(mappedBy = "idMusica")
+    @JsonManagedReference
     private List<PlaylistMusicasModel> dsplaylistMusicas;
 
     public Integer getIdMusica() {

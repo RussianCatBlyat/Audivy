@@ -6,7 +6,6 @@ import com.Audivy.Audivy.models.UsuariosModel;
 import com.Audivy.Audivy.repositories.AlbunsRepository;
 import com.Audivy.Audivy.repositories.UsuariosRepository;
 import jakarta.validation.Valid;
-import jdk.internal.org.objectweb.asm.tree.analysis.BasicInterpreter;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,8 +19,6 @@ import java.util.Optional;
 @CrossOrigin(origins = "*")
 @RequestMapping("/Albuns")
 public class AlbunsController {
-
-    BasicInterpreter entityManager;
 
     @Autowired
     AlbunsRepository albunsRepository;
