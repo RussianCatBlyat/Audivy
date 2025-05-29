@@ -14,18 +14,18 @@ public class UsuariosModel  {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUsuario;
 
+    private String nmUsuario;
+    private String dsEmail;
+    private String dsSenha;
+    private String tpUsuario;
+    private UsuariosPlano dsPlano;
+
     @OneToMany(mappedBy = "idUsuario")
     @JsonManagedReference
     private List<PlaylistsModel> dsPlaylists;
     @OneToMany(mappedBy = "idUsuario")
     @JsonManagedReference
     private List<AlbunsModel> dsAlbuns;
-
-    private String nmUsuario;
-    private String dsEmail;
-    private String dsSenha;
-    private String tpUsuario;
-    private UsuariosPlano dsPlano;
 
     public Integer getIdUsuario() {
         return idUsuario;
