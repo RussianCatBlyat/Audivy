@@ -6,8 +6,7 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "TBPLAYLISTMUSICAS")
-public class PlaylistMusicasModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class PlaylistMusicasModel   {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
