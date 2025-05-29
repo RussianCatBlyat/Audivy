@@ -1,6 +1,5 @@
 package com.Audivy.Audivy.dto;
 
-import com.Audivy.Audivy.models.UsuariosModel;
 import jakarta.validation.constraints.NotNull;
 
 import java.util.Date;

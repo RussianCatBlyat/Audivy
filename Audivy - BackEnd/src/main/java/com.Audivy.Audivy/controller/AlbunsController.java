@@ -27,8 +27,8 @@ public class AlbunsController {
 
     @Autowired
     AlbunsRepository albunsRepository;
+    @Autowired
     UsuariosRepository usuariosRepository;
-    UsuariosModel usuariosModel;
 
     @GetMapping
     public ResponseEntity<List<AlbunsModel>> getAllAlbum() {
