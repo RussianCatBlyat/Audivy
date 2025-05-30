@@ -18,7 +18,7 @@ public class MusicasModel  {
     private String arqAudio;
     private String dsGenero;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idAlbum", nullable = false)
     @JsonBackReference
     private AlbunsModel idAlbum;

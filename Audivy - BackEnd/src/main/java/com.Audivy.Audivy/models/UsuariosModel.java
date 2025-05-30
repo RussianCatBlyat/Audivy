@@ -3,7 +3,6 @@ package com.Audivy.Audivy.models;
 import com.Audivy.Audivy.enums.UsuariosPlano;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-import java.io.Serializable;
 import java.util.List;
 
 @Entity

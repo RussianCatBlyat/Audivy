@@ -18,7 +18,7 @@ public class PlaylistMusicasModel   {
     @JsonBackReference
     private PlaylistsModel idPlaylist;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idMusica", nullable = false)
     @JsonBackReference
     private MusicasModel idMusica;
