@@ -14,11 +14,11 @@ public class PlaylistMusicasModel   {
     private Integer idPlaylistMusica;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "idUsuario", nullable = false)
+    @JoinColumn(name = "idPlaylist", nullable = false)
     @JsonBackReference
     private PlaylistsModel idPlaylist;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "idMusica", nullable = false)
     @JsonBackReference
     private MusicasModel idMusica;
