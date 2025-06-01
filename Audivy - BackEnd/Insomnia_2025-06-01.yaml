@@ -1,0 +1,183 @@
+type: collection.insomnia.rest/5.0
+name: Audivy
+meta:
+  id: wrk_9f73abc2b0124dd8b65c787253d3f252
+  created: 1748805560549
+  modified: 1748807546783
+collection:
+  - url: localhost:8082/Albuns
+    name: Listar Albuns
+    meta:
+      id: req_ab4ba45b308346ac87d083de0717304c
+      created: 1748805560608
+      modified: 1748805895955
+      isPrivate: false
+      sortKey: -1748805560608
+    method: GET
+    headers:
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8082/Usuarios
+    name: Novo Usuario
+    meta:
+      id: req_29f6819d8a554cb28c4f8a947ce788ed
+      created: 1748805653072
+      modified: 1748805940534
+      isPrivate: false
+      sortKey: -1748805653072
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nmUsuario": "Rafaela",
+        	"dsEmail": "usuario@mail.com",
+        	"dsSenha": "123",
+        	"tpUsuario": "ADMIN",
+        	"dsPlano": "PREMIUM"
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8082/Usuarios
+    name: Listar Usuarios
+    meta:
+      id: req_7d49813136864580be6d30d50afcea21
+      created: 1748806004373
+      modified: 1748806012183
+      isPrivate: false
+      sortKey: -1748805606840
+    method: GET
+    body:
+      mimeType: application/json
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8082/Albuns
+    name: Novo Album
+    meta:
+      id: req_7ccf29e8f89445ada4928b276e6efac9
+      created: 1748806381368
+      modified: 1748806502296
+      isPrivate: false
+      sortKey: -1748805629956
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"nmTitulo": "SPC: Baile do Nego Véio",
+        	"dtLancamento": "2025-01-01",
+        	"idUsuario": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8082/Musicas
+    name: Nova Musica
+    meta:
+      id: req_a4ab01ebf17d4512b5d9283a82338ba3
+      created: 1748806527355
+      modified: 1748807358001
+      isPrivate: false
+      sortKey: -1748805618398
+    method: POST
+    body:
+      mimeType: application/json
+      text: |-
+        {
+          "nmTitulo": "Garota de Ipanema",
+          "dsDuracao": "02:58",
+          "arqAudio": "garota_de_ipanema.mp3",
+          "dsGenero": "Bossa Nova",
+          "idAlbum": 1,
+          "idUsuario": 1
+        }
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+  - url: localhost:8082/Musicas
+    name: Listar Albuns
+    meta:
+      id: req_712c548f837046ad9fb6c71896c609d4
+      created: 1748806536807
+      modified: 1748807587792
+      isPrivate: false
+      sortKey: -1748805583724
+    method: GET
+    body:
+      mimeType: application/json
+    headers:
+      - name: Content-Type
+        value: application/json
+      - name: User-Agent
+        value: insomnia/11.1.0
+    settings:
+      renderRequestBody: true
+      encodeUrl: true
+      followRedirects: global
+      cookies:
+        send: true
+        store: true
+      rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_dd27fd275695ea74a0f06d8572bc068df904c041
+    created: 1748805560561
+    modified: 1748805560561
+environments:
+  name: Base Environment
+  meta:
+    id: env_dd27fd275695ea74a0f06d8572bc068df904c041
+    created: 1748805560556
+    modified: 1748805560556
+    isPrivate: false
