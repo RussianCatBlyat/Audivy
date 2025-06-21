@@ -49,4 +49,16 @@ public class UsuariosControllerTest {
         UsuariosModel usuarioResponse = (UsuariosModel) response.getBody();
         assertEquals("Teste", usuarioResponse.getNmUsuario());
     }
+
+    @Test
+    void testGetUsuarioById_UsuarioNaoExiste() {
+        Integer id = 2;
+
+        when(usuariosRepository.findById(id)).thenReturn(Optional.empty());
+
+        ResponseEntity<Object> response = usuariosController.getOneUsuario(id);
+
+        assertEquals(404, response.getStatusCodeValue());
+        assertNull(response.getBody());
+    }
 }
